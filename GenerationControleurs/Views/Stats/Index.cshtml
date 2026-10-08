@@ -1,0 +1,56 @@
+﻿@model GenerationControleurs.ViewModels.RestaurantsStatsVM
+
+
+@{
+    ViewData["Title"] = "Stats";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NbCommandes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbPlatsVendus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixTotalCommandes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrixMaxCommande)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxNiveauPiquant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.RestaurantStatsVM)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.NbCommandes)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.NbPlatsVendus)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PrixTotalCommandes)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.PrixMaxCommande)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
