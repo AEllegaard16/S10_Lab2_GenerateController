@@ -50,7 +50,31 @@
                 <td>
                     @Html.DisplayFor(model => item.PrixMaxCommande)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => item.MaxNiveauPiquant)
+                </td>
             </tr>
         }
+        <tr>
+            <td>
+                Total
+            </td>
+            <td>
+                @Model.NbCommandes
+            </td>
+            <td>
+                @Model.NbPlatsVendus
+            </td>
+            <td>
+                @Model.PrixTotalCommandes
+            </td>
+            <td>
+                @Model.PrixMaxCommande
+            </td>
+            <td>
+                @Model.MaxNiveauPiquant
+            </td>
+        </tr>
     </tbody>
+
 </table>

@@ -13,7 +13,7 @@ namespace GenerationControleurs.ViewModels
             NbPlatsVendus = restaurant.Plats.Sum(p => p.CommandesPlats.Sum(cp => cp.Quantite));
             PrixTotalCommandes = restaurant.Commandes.Sum(c => c.CommandesPlats.Sum(cp => cp.Plat.Prix * cp.Quantite));
             PrixMaxCommande = restaurant.Commandes.Max(c => c.CommandesPlats.Sum(cp => cp.Plat.Prix * cp.Quantite));
-            MaxNiveauPiquant = restaurant.Plats.Max(p => p.NiveauPiquant) ?? 0;
+            MaxNiveauPiquant = restaurant.Plats.Max(p => p.NiveauPiquant!= null ? p.NiveauPiquant.Value : 0);
         }
 
         public string Nom { get; set; }

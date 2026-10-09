@@ -6,8 +6,12 @@ namespace GenerationControleurs.ViewModels
     {
         public RestaurantsStatsVM(IEnumerable<Restaurant> restaurants)
         {
-            // TODO: Écrire la logique nécessaire pour remplir les propriétés de cette vue
-            // TODO: Il va falloir créer un RestaurantStatsVM pour chaque restaurant
+            RestaurantStatsVM = restaurants.Select(r => new RestaurantStatsVM(r)).ToList();
+            NbCommandes = restaurants.Sum(r => r.Commandes.Count);
+            NbPlatsVendus = restaurants.Sum(r => r.Plats.Sum(p => p.CommandesPlats.Sum(cp => cp.Quantite)));
+            PrixTotalCommandes = restaurants.Sum(r => r.Commandes.Sum(c => c.CommandesPlats.Sum(cp => cp.Plat.Prix * cp.Quantite)));
+            PrixMaxCommande = restaurants.Max(r => r.Commandes.Max(c => c.CommandesPlats.Sum(cp => cp.Plat.Prix * cp.Quantite)));
+            MaxNiveauPiquant = restaurants.Max(r => r.Plats.Max(p => p.NiveauPiquant != null ? p.NiveauPiquant.Value : 0));
         }
 
         public int NbCommandes { get; set; }
